@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import EventsSection from "./components/EventsSection";
 import HowItWorks from "./components/HowItWorks";
 import Footer from "./components/Footer";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -23,12 +24,14 @@ function App() {
       <main>
         <Hero query={query} setQuery={setQuery} />
 
-        <EventsSection
-          query={query}
-          setQuery={setQuery}
-          showSaved={showSaved}
-          setShowSaved={setShowSaved}
-        />
+        <ErrorBoundary>
+          <EventsSection
+            query={query}
+            setQuery={setQuery}
+            showSaved={showSaved}
+            setShowSaved={setShowSaved}
+          />
+        </ErrorBoundary>
 
         <HowItWorks />
       </main>
